@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Teknologi Nusantara</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function validateLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            // Simple validation - check if fields are not empty
+            if (username === '' || password === '') {
+                alert('Username dan password harus diisi');
+                return false;
+            }
+            
+            // Basic credential check (in real app, this would be server-side)
+            if (username === 'admin' && password === 'admin') {
+                window.location.href = 'dashboard.html';
+                return false;
+            } else {
+                alert('Username atau password salah');
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <main class="login-container">
+        <div class="login-box">
+            <header class="login-header">
+                <img src="logo.png" alt="Teknologi Nusantara" class="company-logo">
+                <h1>Teknologi Nusantara</h1>
+            </header>
+
+            <form class="auth-form" action="dashboard.html" method="get" onsubmit="return validateLogin(event)">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-primary">Masuk</button>
+            </form>
+
+            <footer class="login-footer">
+                <a href="#">Lupa password</a>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
